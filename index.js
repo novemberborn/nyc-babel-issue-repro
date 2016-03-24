@@ -41,7 +41,9 @@ export class Chan {
         }
       } else {
         assert(item.type == TYPE_VALUE || item.type == TYPE_ERROR)
-        let fn = item.type == TYPE_VALUE ? fnVal : fnErr
+        let fn = item.type == TYPE_VALUE
+          ? fnVal
+          : fnErr
         item.fnVal && item.fnVal()
         fn && fn(item.value)
         if (this._state != STATE_CLOSED) {
@@ -62,8 +64,10 @@ export class Chan {
       this._triggerWaiters(true)
       this._emitDrain()
     }
- 
-    return needsCancelFn ? () => { item.fnVal = item.fnErr = undefined } : nop
+
+    return needsCancelFn
+      ? () => item.fnVal = item.fnErr = undefined
+      : nop;
   }
 
   _takeFromWaitingPublisher() {
