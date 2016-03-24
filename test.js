@@ -4,7 +4,7 @@ import {STATE_NORMAL, STATE_WAITING_FOR_PUBLISHER, STATE_CLOSING, STATE_CLOSED} 
 import {TYPE_VALUE, TYPE_ERROR} from '.'
 
 const TEST_BUFFER = [
-  { fnVal: nop }, { fnErr: nop }, 
+  { fnVal: nop }, { fnErr: nop },
   { fnVal: nop }, { fnErr: nop },
   { fnVal: nop }, { fnErr: nop },
   { fnVal: nop }, { fnErr: nop }
@@ -21,7 +21,7 @@ test('this provides complete coverage', t => {
   ch._state = STATE_NORMAL
   ch._buffer = TEST_BUFFER.slice()
   takeItAll(ch)
-  
+
   t.pass()
 })
 

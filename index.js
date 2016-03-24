@@ -30,7 +30,7 @@ export class Chan {
       fnVal && fnVal(CLOSED)
       return nop
     }
- 
+
     let prevState = this._state
     if (prevState != STATE_WAITING_FOR_PUBLISHER) {
       let item = this._takeFromWaitingPublisher()
@@ -50,13 +50,13 @@ export class Chan {
         return nop
       }
     }
- 
+
     assert(this._state == STATE_WAITING_FOR_PUBLISHER)
- 
+
     let item = { fnVal, fnErr }
     let buf = []
     buf.push(item)
- 
+
     if (prevState == STATE_NORMAL) {
       // notify all waiters for the opportunity to publish
       this._triggerWaiters(true)
